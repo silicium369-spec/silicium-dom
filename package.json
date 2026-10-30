@@ -1,0 +1,70 @@
+{
+  "name": "silicium-dom",
+  "version": "1.0.0",
+  "description": "Zero-allocation Dual-Engine WebAssembly & V8 Keyed DOM Engine and DataGrid SDK (0 GC pauses, 100% krausest/js-framework-benchmark Keyed)",
+  "license": "LicenseRef-Silicium-Community-1.0",
+  "author": "Silicium Architecture Research Team <silicium369@gmail.com>",
+  "type": "module",
+  "main": "./sdk/silicium_dom.mjs",
+  "module": "./sdk/silicium_dom.mjs",
+  "types": "./sdk/index.d.ts",
+  "scripts": {
+    "build-prod": "node ./scripts/build-prod.mjs",
+    "test": "bash ./reproduce_all.sh",
+    "smoke": "bash ./reproduce_all.sh"
+  },
+  "js-framework-benchmark": {
+    "frameworkVersion": "1.0.0",
+    "frameworkHomeURL": "https://github.com/silicium369-spec/silicium-dom",
+    "repoURL": "https://github.com/silicium369-spec/silicium-dom",
+    "language": "Rust",
+    "issues": [],
+    "useShadowRoot": false
+  },
+  "exports": {
+    ".": {
+      "types": "./sdk/index.d.ts",
+      "import": "./sdk/silicium_dom.mjs",
+      "default": "./sdk/silicium_dom.mjs"
+    },
+    "./wasm": "./bin/silicium_dom.wasm",
+    "./krausest": "./index.html",
+    "./v8": {
+      "types": "./sdk/index.d.ts",
+      "import": "./sdk/silicium_v8_dom.mjs",
+      "default": "./sdk/silicium_v8_dom.mjs"
+    },
+    "./krausest-v8": "./v8_index.html"
+  },
+  "files": [
+    "index.html",
+    "v8_index.html",
+    "bin/silicium_dom.wasm",
+    "data/krausest_dictionaries.json",
+    "scripts/build-prod.mjs",
+    "sdk/silicium_dom.mjs",
+    "sdk/silicium_v8_dom.mjs",
+    "sdk/silicium_v8_dom.ts",
+    "sdk/index.d.ts",
+    "sdk/krausest_index.html",
+    "sdk/krausest_v8_index.html",
+    "frameworks/keyed/silicium-wasm",
+    "frameworks/keyed/silicium-v8",
+    "LICENSE",
+    "PATENTS.md",
+    "CLA.md",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "v8",
+    "dom",
+    "datagrid",
+    "keyed",
+    "js-framework-benchmark",
+    "zero-copy",
+    "silicium"
+  ]
+}

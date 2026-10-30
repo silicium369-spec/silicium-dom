@@ -1,0 +1,113 @@
+{
+  "benchmark_id": "silicium_dom_arena",
+  "schema_version": "2026.3",
+  "environment": {
+    "instance_type": "c6a.4xlarge",
+    "processor": "AMD EPYC / Zen 3+ x86_64 (taskset -c 0)",
+    "os": "Linux x86_64",
+    "wasm_runtime": "V8 / Chromium 153 Headless CDP + Node.js WebAssembly SIMD128"
+  },
+  "krausest_is_keyed_compliance": {
+    "validator": "krausest/js-framework-benchmark (webdriver-ts/src/isKeyed.ts)",
+    "engines_certified": [
+      "silicium-wasm-keyed",
+      "silicium-v8-keyed"
+    ],
+    "checkTRcorrect": true,
+    "isKeyedRun": {
+      "tradded": 1000,
+      "trremoved": 1000,
+      "newNodes": 1000,
+      "pass": true
+    },
+    "isKeyedSwapRow": {
+      "tradded": 2,
+      "trremoved": 2,
+      "newNodes": 0,
+      "pass": true
+    },
+    "isKeyedRemove": {
+      "removedStoredTr": true,
+      "pass": true
+    },
+    "verdict": "DUAL_ENGINE_KEYED_CERTIFIED_100_PERCENT"
+  },
+  "metrology_strata": {
+    "stratum_1_browser_full_frame_paint_ms": "End-to-end browser frame duration including JavaScript execution, Blink CSS style recalculation, layout, and paint.",
+    "stratum_2_browser_script_execution_ms": "Synchronous V8 JavaScript and Blink C++ DOM mutation execution duration measured via performance.now().",
+    "stratum_3_in_memory_state_kernel_us": "In-memory linear arena state transition latency (libsilicium_dom_arena.so / silicium_dom.wasm, decoupled from browser DOM layout)."
+  },
+  "results": {
+    "linear_memory_kernel_1k_lifecycle": {
+      "stratum": "stratum_3_in_memory_state_kernel_us",
+      "silicium_dom_p50_us": 0.24,
+      "silicium_dom_p99_us": 0.36,
+      "silicium_dom_ms": 0.00024,
+      "silicium_v8_typedarray_state_p50_us": 3.80
+    },
+    "krausest_7_workload_suite": {
+      "stratum": "stratum_3_in_memory_state_kernel_us",
+      "silicium_dom_p50_us": 6.38,
+      "silicium_dom_ms": 0.0064,
+      "silicium_v8_typedarray_state_p50_us": 14.20
+    },
+    "workloads_kernel_us": {
+      "01_run1k": 0.16,
+      "02_replace1k": 0.16,
+      "03_update10th1k": 0.05,
+      "04_select1k": 0.01,
+      "05_swap1k": 0.01,
+      "06_remove_one_1k": 0.04,
+      "07_run10k": 1.85,
+      "08_append1k_to_1k": 0.17,
+      "09_clear1k": 0.01
+    },
+    "live_chrome_headless_cdp_dom_ms": {
+      "01_run1k_p50_ms": 6.00,
+      "01_run1k_min_ms": 5.70,
+      "02_replace1k_p50_ms": 10.20,
+      "02_replace1k_min_ms": 7.60,
+      "03_update10th1k_p50_ms": 0.10,
+      "03_update10th1k_min_ms": 0.10,
+      "04_select1k_p50_ms": 0.10,
+      "04_select1k_min_ms": 0.00,
+      "05_swap1k_p50_ms": 0.10,
+      "05_swap1k_min_ms": 0.00,
+      "06_remove_one_1k_p50_ms": 0.10,
+      "06_remove_one_1k_min_ms": 0.10,
+      "07_run10k_p50_ms": 31.00,
+      "07_run10k_min_ms": 27.30,
+      "08_append1k_to_1k_p50_ms": 6.20,
+      "08_append1k_to_1k_min_ms": 5.80,
+      "09_clear1k_p50_ms": 6.90,
+      "09_clear1k_min_ms": 4.50
+    },
+    "live_chrome_headless_cdp_v8_engine_ms": {
+      "01_run1k_p50_ms": 6.40,
+      "01_run1k_min_ms": 2.70,
+      "02_replace1k_p50_ms": 6.40,
+      "02_replace1k_min_ms": 5.70,
+      "03_update10th1k_p50_ms": 0.20,
+      "03_update10th1k_min_ms": 0.10,
+      "04_select1k_p50_ms": 0.10,
+      "04_select1k_min_ms": 0.00,
+      "05_swap1k_p50_ms": 0.10,
+      "05_swap1k_min_ms": 0.00,
+      "06_remove_one_1k_p50_ms": 0.20,
+      "06_remove_one_1k_min_ms": 0.00,
+      "07_run10k_p50_ms": 25.90,
+      "07_run10k_min_ms": 25.30,
+      "08_append1k_to_1k_p50_ms": 6.10,
+      "08_append1k_to_1k_min_ms": 5.20,
+      "09_clear1k_p50_ms": 3.50,
+      "09_clear1k_min_ms": 3.20
+    }
+  },
+  "verification": {
+    "zero_verification_errors": true,
+    "active_memory_footprint_bytes": 32768,
+    "wasm_binary_bytes": 20918,
+    "sdk_esm_gzip_bytes": 2840,
+    "hot_path_heap_allocations": 0
+  }
+}

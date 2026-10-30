@@ -1,0 +1,5 @@
+bin/*
+!bin/silicium_dom.wasm
+*.tar.gz
+*.log
+*.pid
