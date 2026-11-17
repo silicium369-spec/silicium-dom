@@ -1,0 +1,118 @@
+================================================================================
+SILICIUM COMMUNITY & EVALUATION LICENSE v1.0 (SCSL-1.0)
+SPDX-License-Identifier: LicenseRef-Silicium-Community-1.0
+Copyright (c) 2026 The Silicium Authors. Patent Notice: Protected under Patent Pending. All rights reserved.
+================================================================================
+
+DISTRIBUTION ARCHITECTURE NOTICE:
+This distribution separates the open benchmark reproduction harnesses (`reproduce_all.sh`)
+and integration adapters (governed by their respective open-source SPDX license headers)
+from the precompiled, stripped WebAssembly (`bin/silicium_dom.wasm`), Pure V8
+(`sdk/silicium_v8_dom.mjs`), and section-header-obliterated ELF64 (`e_shoff=0`,
+release asset `libsilicium_dom_arena.so`) native compute binaries governed by SCSL-1.0.
+
+1. GRANT OF SINGLE-NODE EVALUATION & DEVELOPER SAFE-HARBOR LICENSE (TIER 0)
+   Subject to strict compliance with all eight (8) protection shields below, The Authors
+   ("Licensor") hereby grant you a personal, non-exclusive, non-transferable,
+   non-sublicensable, revocable, royalty-free license to execute the unmodified
+   evaluation binaries ("Tier 0 Community Edition", zero license key required) solely for:
+   a. Individual non-commercial benchmark verification, academic research, and peer
+      performance reproduction;
+   b. Single-developer local workstation, personal container (`0.0.0.0` inside local
+      Docker/Podman port-mapped to `127.0.0.1` or a private single-household non-commercial
+      RFC 1918 LAN), and integration testing (`127.0.0.1` / `localhost` or personal Homelab,
+      `1` node, `<= 8` vCPUs, `<= 10 GiB/h` rolling evaluation envelope, `<= 16,384` active rows,
+      `Queue-Depth=1`); and
+   c. Automated ephemeral continuous-integration test suites (`CI=true`, unit tests,
+      and Docker image verification builds) that do not serve live or commercial traffic.
+   Any commercial production deployment or higher-capacity enterprise usage requires an
+   active Commercial Enterprise License issued by Licensor (`silicium369@gmail.com`).
+
+2. SHIELD 1 — NO REVERSE ENGINEERING OR BINARY DECOMPILATION
+   Except to the extent expressly mandated by non-waivable applicable law, you may not
+   decompile, disassemble, reverse-engineer, reconstruct stripped ELF64/Mach-O/PE section
+   headers (`e_shoff = 0`), attach dynamic binary instrumentation, debuggers, or tracers
+   (`ptrace`, `LD_PRELOAD`, Frida, Intel PIN, DynamoRIO), or extract internal lookup
+   tables (LUTs), SIMD shuffle masks, or constants from the Software.
+
+3. SHIELD 2 — NO IMPLIED PATENT LICENSE, ZERO EXHAUSTION & ANTI-ESTOPPEL
+   All algorithmic architectures, SIMD/SIMT register schedules, sub-byte lookup tables,
+   and numerical kernels are proprietary trade secrets and patent-pending inventions.
+   No license, immunity, or exhaustion of rights under any patent or patent application
+   is granted or implied by estoppel, exhaustion, or otherwise. Any re-implementation
+   of the underlying methods infringes Licensor's pending and issued patent claims.
+
+4. SHIELD 3 — GOVERNING LAW, UNCITRAL ARBITRATION & EXCLUSION OF CISG
+   This License shall be governed by and construed in accordance with applicable
+   international intellectual property conventions and the laws of the Licensor's
+   principal sovereign jurisdiction, excluding conflict-of-law rules and expressly
+   excluding the United Nations Convention on Contracts for the International Sale of
+   Goods (CISG). Any dispute, controversy, or claim arising out of or relating to this
+   License, or the breach, termination, or invalidity thereof, shall be finally resolved
+   by confidential binding arbitration conducted in the English language before a single
+   arbitrator in accordance with the UNCITRAL Arbitration Rules.
+
+5. SHIELD 4 — SEVERABILITY & SURVIVAL OF PROTECTIONS
+   If any provision of this License is held invalid or unenforceable, such provision
+   shall be reformed to the maximum enforceable extent to effectuate Licensor's
+   protection intent, and all remaining shields shall remain in full force and survive
+   any termination of this License.
+
+6. SHIELD 5 — TECHNOLOGICAL PROTECTION MEASURES (TPMs)
+   The stripped ELF64 (`e_shoff=0`) and signed Mach-O64 (`LC_CODE_SIGNATURE`) binary
+   format, integrity guards, and offline Ed25519 / U256 license verification gates
+   constitute Technological Protection Measures under the WIPO Copyright Treaty (WCT
+   Article 11), 17 U.S.C. Section 1201, EU Directive 2001/29/EC Article 6, and applicable
+   laws. Circumventing, patching, or bypassing these controls is strictly prohibited.
+
+7. SHIELD 6 — AI-ASSISTED SYNTHESIS & CLEAN-ROOM RESTRICTIONS
+   You shall NOT feed, expose, or provide the binaries, their C-ABI signatures,
+   disassembly listings, control-flow graphs, PMU hardware counter traces, or timing
+   profiles into any Large Language Model (LLM), AI coding agent, neural decompiler,
+   automated program superoptimizer, or binary-to-binary translation layer to synthesize
+   clean-room functional specifications, train models, or transpile kernels to another
+   instruction set architecture (ISA).
+
+8. SHIELD 7 — SINGLE-NODE COMMUNITY SCOPE, DEVELOPER SAFE-HARBOR & CLUSTER LIMITS
+   Evaluation is bounded to one (1) physical CPU socket and one (1) physical GPU
+   accelerator with `Queue-Depth=1` (`<= 8` vCPUs, `<= 10 GiB/h` rolling throughput, and
+   `<= 16,384` active rows in library/SDK mode).
+   a. Developer Loopback, Personal Container/Homelab & Ephemeral CI Safe-Harbor:
+      Single-developer local testing on loopback (`127.0.0.1` / `localhost`), personal
+      non-commercial single-household container binding (`0.0.0.0` inside local
+      Docker/Podman mapped exclusively to `127.0.0.1` or a private single-household
+      RFC 1918 LAN on `1` node within the `<= 8` vCPUs, `<= 10 GiB/h`, `<= 16,384` active
+      rows envelope), and automated ephemeral test runners (`CI=true`, `GITHUB_ACTIONS=true`,
+      unit test suites, and non-serving Docker build checks) are expressly permitted
+      without a license key.
+   b. Commercial Proxy & External Multi-User Network Ban: Outside the single-developer
+      loopback and personal single-household container/Homelab safe-harbor in Section 8a,
+      you shall NOT bind or expose the binary on external, corporate, or shared network
+      interfaces (`0.0.0.0` in corporate/cloud/multi-user environments, Kubernetes Ingress,
+      NGINX, Envoy, gRPC, or multi-user HTTP gateways), IPC queues, or shared-memory
+      multiplexers to serve multiple users, employees, tenants, or production workers
+      without a Commercial Enterprise License (`Slots 2..10`).
+   c. Commercial Production & Unlicensed Cluster Use: You shall NOT deploy the binary in
+      any commercial production service, revenue-generating SaaS, internal corporate batch
+      pipeline, or unlicensed cluster workload, nor recycle containers, processes, or
+      `/dev/shm` state to reset the `10 GiB/h` evaluation cap, without an active
+      Commercial Enterprise License (`Slots 2..10`) from Licensor.
+
+9. SHIELD 8 — ENTERPRISE COMPLIANCE IDENTIFICATION & PUBLIC BENCHMARKING
+   a. Enterprise Compliance Identification: All headers carry `SPDX-License-Identifier:
+      LicenseRef-Silicium-Community-1.0` so enterprise Software Composition Analysis (SCA)
+      tooling (Black Duck, FOSSA, Snyk) accurately classifies the binary license and
+      enforces organizational compliance policies unless a Commercial Enterprise License
+      certificate is registered.
+   b. Public Benchmarks & Competitive Evaluation: Independent public benchmarks of the
+      unmodified Software are welcomed when citing `reproduce_all.sh` and exact hardware
+      configurations for reproducibility. You may not use the Software to calibrate,
+      autotune, train, or validate a competing commercial engine.
+
+10. DISCLAIMER OF WARRANTIES
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE
+    FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT,
+    OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE.
+================================================================================
